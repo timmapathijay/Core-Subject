@@ -1,0 +1,216 @@
+/* OOP-- Object Oriented Programming 
+OOPs is about creating objects that contain both data & methods 
+Advantages  of OOP:
+1. OOP is faster and easier to execute 
+2. OOP provide a clear structure of the program
+3. OOP help to keep code DRY (Don't repeat yourself)
+** Java Source File structure
+1)In java program the java source file can contain any number of classes but
+atmost one public class.
+2)If their is no public class any name can be used for saving java program 
+but if their is a public class the file name should be same as the public 
+class name.
+javac filename.java -- Compilation 
+java filename -- Run
+For every class present inside the java source file a separate .class file will 
+be generated.
+** Class :
+* A class is a blueprint for the object.
+* Class doesn't consume any space.
+** objects
+* An object can be defined as an instance of a class.
+* An object contains an address & takes up some space in memory.
+*/
+class Student
+{
+    int rollNo;
+    String studentName;
+}
+class Main
+{
+    public static void main(String []args)
+    {
+        /* Object Creation
+        class name object name = new class name(); 
+        */
+        Student obj=new Student();
+    }
+}
+/*
+** Class Level Modifier
+public : if the class is public we can access it from anywhere
+(inside package, outside package)
+default: we can access it within the same package
+abstract: if the class is abstract object creation is not possible
+final : if the class is final child class creation is not possible
+
+** Abstract
+*Abstract method has only declaration but not implementation
+abstract class Loan 
+{
+    public abstract double interestRate();
+}
+* Child class is only responsible for the implementation of the abstract method.
+* If the class contains atleast one abstract method the class must be declared as abstract.
+* Object creation is not possible
+
+** Access Modifier
+public : anywhere
+private: class level 
+default: package level 
+protected : we can access method or variable declared as protected 
+in the same package & from outside package within the child class.
+protected -- default + child class
+
+#Scope 
+Private < default < protected < public
+** interface
+* Any service requirement specification 
+## OOPs Concept 
+1)Data Hiding 
+2)Abstraction
+3)Encapsulation
+
+** Inheritance 
+Advantage:
+1)Code reusability
+* Object class act as the Parent for all java classes.
+#Types of Inheritance
+1) Single inheritance
+class A{
+    ....
+}
+class B extends A{
+
+}
+2)MultiLevel inheritance
+class A{
+    ...
+}
+class B extends A{
+   ....
+}
+class C extends B{
+    .....
+}
+3)Multiple inheritance
+The process of extending more than one parent class at a time is known 
+as Multiple inheritance
+Java does not support Multiple inheritance
+* Ambiguity Problem 
+* Diamond access Problem
+4)Hierarchical inheritance
+Multiple child class extends a single parent class.
+class A{
+    ....
+}
+class B extends A{
+    .....
+}
+class C extends A{
+    .....
+}
+5)Hybrid inheritance
+Combining various types of inheritance like multiple, simple,multiLevel and hierarchical inheritance is known as hybrid inheritance
+Java does not support hybrid inheritance because multiple inheritance is not supported.
+** Java does not support :
+* Multiple inheritance 
+* Hybrid inheritance
+# An interface can extends multiple interface 
+Because in interface only the declaration is their .
+** Method Overloading 
+Method signature : method name(argument types)
+Method having same name but different argument types is known as 
+Method Overloading.
+* In Overloading Method resolution is always taken care by compiler 
+based on reference type.
+"Compile time Polymorphism"
+      or
+"Static Polymorphism"
+      or
+"Early Binding"
+*/
+//Case 1: In overloading if the exact match is not possible an automatic promotion is their 
+byte -- short -- char --- int -- long -- float -- double  
+class Test 
+{
+    public void m1(int i)
+    {
+        System.out.println("int - arg method");
+    }
+    public void m1(float f)
+    {
+        System.out.println("float - arg method");
+    }
+}
+class main{
+    public static void main(String [] args)
+    {
+        Test t=new Test();
+        t.m1(5);// int - arg method;
+        t.m1(10.5f);// float - arg method
+        t0m1('a');// int - arg method
+    }
+}
+// case 2: if parent & child argument is their always give preference to the child argument
+class Test{
+    public void m1(Object ob)
+    {
+        System.out.println("Object Version");
+    }
+    public void m1(String s)
+    {
+        System.out.println("String Version");
+    }
+}
+class main{
+    public static void main(String [] args)
+    {
+        Test t=new Test();
+        t.m1(new Object());// Object Version
+        t.m1("Jaya")// String Version
+        t.m1(null);// String Version 
+    }
+} 
+
+// Case 3:if multiple method arguments match & their is no relationship as parent & child -- Compile Time Error 
+** Overriding : Overriding is a feature that allows a subclass or child class 
+to provide a specific implementation of a method that is already provided by 
+one of its super-classes or parent classes. 
+* In Overriding method resolution taken care by JVM based on runtime object .
+"Run time Polymorphism" or "Dynamic Polymorphism " or "Late Binding"
+Rules :
+1) In method Overriding method signature must be same.
+2) Return type must be same but from 1.5V Co-varient return type is also allowed.
+  -Co-varient return type is allowed only for objects but not for primitive type.
+3)Overriding concept is not applicable for private method
+4)Overriding concept is not applicable for final method
+5)While overriding we can't reduce scope of access modifiers, but we can increase the scope.
+
+-- For variable overriding concept is not their , variable resolution is always taken 
+care by Compiler based on reference type.
+** Polymorphism : many - form 
+1)Run time Polymorphism 
+  eg : Overriding
+2)Compile time Polymorphism 
+  eg: overloading , Method Hiding
+** Static 
+* If you don't want a variable to be object specific you can make it Static.
+* Static variable are kept in class loader memory
+* If you are using static variable you can use object name or class name.
+Static block is used to initialize the static variable
+static{
+    ceo="larry";
+}
+* Static block will get execute when you load a class.
+* Static method : we can access it without creation an object of the class.
+** Constructor 
+* Constructor is a member method which have same name as class name.
+* Constructor get executed when you create an object.
+* Constructor will never return anything.
+- default Constructor - Parameterized Constructor
+In java we create object inside Heap memory
+** Final 
+* If a class is declared as final it cannot be inherited by other classes.
+* If the attributes or methods are declared as final it cannot be overridden.
+
