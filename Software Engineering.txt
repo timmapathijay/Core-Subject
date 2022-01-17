@@ -1,0 +1,34 @@
+Q1) What is Software Engineering ?
+It is a systematic , disciplined , cost - effective technique for software development . 
+Q2) What is SDLC ?
+SDLC is a process used in software industry to produce & design high - quality software.
+1)Planning 
+2)Defining (SRS)
+3)Designing  (Layout)
+4) Building (Coding / Implementation )
+5)Testing 
+6)Deployment (Maintenance)
+Types of SDLC Model 
+1) Classical Waterfall Model
+2) Iterative Model
+3)Prototyping Model
+4)Incremental Model 
+5)Spiral Model
+6)RAD Model 
+7)Agile Model 
+8)V - Model 
+9) Big Bang Model
+
+Q3) What is White Box testing ?
+In some testing we directly deal with the code , which is known as white Box testing .
+Q4) What is Black Box testing ?
+In some testing we do not have to look at the code , which is known as Black Box testing .
+
+Gray Box testing : Mixture of White Box testing & Black Box testing is known as Gray Box testing.
+
+Q4) Types of Testing 
+1) Unit Testing  : testing a single unit of software is known as unit testing.
+2) Integration Testing 
+3) System Testing 
+4) Regression Testing : Here, a new module is made and it is added to the software. Whenever a new module is added to the software, 
+it is tested to check whether the software is working fine with the change.
