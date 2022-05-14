@@ -1,0 +1,70 @@
+Create table Emp(
+e_id int primary key,
+e_name varchar2(5),
+dept varchar2(5),
+salary number(6)
+);
+desc Emp;
+insert into Emp values(1,'A','HR',10000);
+insert into Emp values(2,'B','MRKT',20000);
+insert into Emp values(3,'A','HR',30000);
+insert into Emp values(4,'C','MRKT',40000);
+insert into Emp values(5,'D','IT',50000);
+Select * from Emp;
+/* Write a SQL Query to display maximum salary from Emp table */
+Select Max(salary) from Emp;
+/* Nested Query */
+/* Write a SQL Query to display employee name who is taking maximum salary */
+Select e_name from Emp where salary = (Select Max(salary) from Emp);
+/* Write a SQL Query to display second highest salary  from Emp table */
+Select Max(salary) from Emp where salary <> (Select Max(salary) from Emp);
+/* Write a SQL Query to display employee name who is taking second highest salary */
+Select e_name from Emp where salary = (Select Max(salary) from Emp where salary <> (Select Max(salary) from Emp));
+/*
+= : to compare it with one value
+in : to compare it with multiple values 
+*/
+/* Group by clause */
+/* Write a SQL Query to display all the dept names along with no of employees working in that */
+Select dept , Count(*) from Emp group by dept;
+/* Write a SQL Query to display all the dept names where no of employees are less than 2*/
+Select dept from Emp group by dept having Count(*) < 2;
+/* where clause cannot be used with group by clause because where clause directly works on the whole table */
+/* Write a SQL Query to display name of employees who is working in a department where no of employees are less 
+than 2*/
+Select e_name from Emp where dept in (Select dept from Emp group by dept having Count(*) < 2); 
+/* Write a SQL Query to display highest salary dept wise  */
+Select dept , Max(salary) from Emp group by dept;
+/* Write a SQL Query to display highest salary dept wise & name of employee who is taking that salary */
+Select e_name from Emp where salary in (Select Max(salary) from Emp group by dept);
+
+/* In / Not In */
+Create table Employee(
+eid int primary key,
+ename varchar2(5),
+address varchar2(10)
+);
+desc Employee;
+insert into Employee values(1,'A','chd');
+insert into Employee values(2,'B','Delhi');
+insert into Employee values(3,'C','Pune');
+insert into Employee values(4,'D','Bangalore');
+insert into Employee values(5,'E','chd');
+Select * from Employee;
+
+Create table Project(
+p_eid int references Employee(eid),
+pid varchar2(5) primary key,
+pname varchar2(10),
+loc varchar2(10)
+);
+desc Project;
+insert into Project values(1,'P1','IOT','Bangalore');
+insert into Project values(5,'P2','Big Data','Delhi');
+insert into Project values(3,'P3','Retail','Mumbai');
+insert into Project values(4,'P4','Android','Hyderabad');
+Select * from Project;
+/* Write a SQL Query to find details of employees whose address is either Delhi or chd or Pune*/
+Select * from Employee where address in ('Delhi','chd','Pune');
+/* Write a SQL Query to find name of employees who are working on a project */
+Select ename from Employee where eid in (Select p_eid from Project);
