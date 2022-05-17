@@ -29,3 +29,16 @@ Alter table Emp add primary key(roll_no);
 5)default
 6)Foreign Key*/
 
+/* Foreign Key */
+Create table Student(
+RollNo int primary key,
+Name varchar2(10),
+Address varchar2(15)
+);
+desc Student;
+Create table Course(
+CourseId varchar2(5),
+CourseName varchar2(20),
+RollNo int references Student(RollNo)
+);
+desc Course;
