@@ -75,7 +75,7 @@ processes.
 
 Q10)Why does Thrashing occur? 
 -  Thrashing occurs when a process is allocated too few frames , then their will be too many & too frequent  page fault.
-
+ It can be eliminated by reducing the level of multiprogramming.
 
 Q11)What is paging and why do we need it? 
 - Paging is a memory management scheme that eliminates the need for contiguous allocation
@@ -84,8 +84,9 @@ non-contiguous.
 Paging is used to solve the external fragmentation problem in operating system.
 
 Q12)Demand Paging, Segmentation 
-- Demand Paging : specifies that if an area of memory is not currently being used,it is 
-swapped to disk to make room for an applications need.
+- Demand Paging : is a method of virtual memory management which is based on the principle that
+pages should only be brought into memory if the executing process demands them.
+So demand paging works opposite to the principle of loading all pages immediately.
 
 -Segmentation : is a memory management scheme that eliminates the need for contiguous allocation
 of physical memory.This scheme permits the physical address space of a process to be 
