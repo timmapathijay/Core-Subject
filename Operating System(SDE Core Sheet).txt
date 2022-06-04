@@ -74,9 +74,8 @@ processes.
 - Aging : is a technique used to avoid the starvation in resource scheduling system.
 
 Q10)Why does Thrashing occur? 
-- High degree of multiprogramming(if number of processes keeps on increasing in the memory) , 
-lack of frames(if a process is allocated too few frames, then there will be too many and
-too frequent page faults.) causes Thrashing.
+-  Thrashing occurs when a process is allocated too few frames , then their will be too many & too frequent  page fault.
+
 
 Q11)What is paging and why do we need it? 
 - Paging is a memory management scheme that eliminates the need for contiguous allocation
