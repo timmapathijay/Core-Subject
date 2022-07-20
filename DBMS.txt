@@ -1,0 +1,109 @@
+Q1) What is DBMS ? Mention Advantages ?
+Database Management System is a software for storing & retrieving user data , considering appropriate security measures. It consists of group of programs which manipulate the database.
+Advantages :
+1)Improved Data Sharing
+2)Improved Data Security
+3)Better Data Integration
+4)Minimised Data Redundancy
+
+Q2)What is Database ?
+Database is a collection of related data stored in a computer system. It can be managed through a DBMS , a software used to managed data.
+
+Q3)What is Database System ?
+The database & DBMS along with the applications that are associated with them are referred to as a database system.
+
+Q4)What is RDBMS ?
+A Relational Database Management System is a database management system that is based on the relational model.
+eg : MySQL , Oracle , IBM DB2 , Microsoft SQL Server
+
+Q5)Types of Database Languages 
+1)DDL(Data Definition Language) : It is used to define the database schema.
+Create , Drop , Alter , Truncate 
+2)DML(Data Manipulation Language) : It is used to access & manipulate data in a database.
+Select , Insert , Update , Delete
+3)DCL(Data Control Language) : Grant , Revoke
+4)TCL(Transaction Control Language) : Commit , RollBack , Save point.
+
+Q6)ACID Properties 
+To ensure the consistency of the database before & after the transaction , certain properties are followed by all the transactions occurring in the system.
+A - Atomicity : The entire transaction takes place at once or doesn't happen at all.
+C - Consistency : The database must be consistent before & after the transaction.
+I - Isolation : Multiple transaction occur independently without interference.
+D - Durability : The changes of a successful transaction occur even if the system failure occurs.
+
+
+Q7) Keys in DBMS 
+Candidate Key - the minimal set of attributes which can uniquely identify a tuple.
+
+Primary Key - is a candidate key that the database designer selects while designing the database.
+Primary Key is Unique + Not Null
+
+Alternate Key - the candidate keys that are left unused after implementing the primary key are called Alternate Key.
+
+Foreign Key - It is an attribute or set of attributes that references to primary key of same table or another table.
+It maintains referential integrity.
+
+Composite Key - A primary key composed of multiple attributes & not just a single attribute is called as composite key.
+
+Unique Key - It is unique for all records of the table.It is non-updatable . It may have a NULL value.
+
+Q8) Types of relationship ?
+1) 1 - 1 2) 1 - M  3) M - 1 4)M - N
+
+Q9) Data Abstraction in DBMS , three levels of it.
+Data Abstraction is a process of hiding irrelevant details from the end user. It helps in achieving data independence which is used to enhance the security of data.
+1)External Schema => View Level
+2)Conceptual Schema => Logical Level
+3)Physical Schema => Physical Level
+
+Q10)Indexing in DBMS 
+Indexing is a way to optimise the performance of a database by minimising the number of disk accesses required when a query is processed.It is a data structure technique which is used to quickly locate  & access the data in a database.
+
+Q11)What is Normalization ? Types of Normalization 
+It is a technique to remove or reduce redundancy from a table.
+Types :
+  1NF 
+* Table should not contain any multivalued attribute.
+  2NF
+* Table should be in 1NF 
+* There should be no partial dependency in the table.
+
+  3NF
+* Table should be in 2NF
+* There should be no transitive dependency in the table.
+
+  BCNF(Boyce Codd Normal form)
+* Table should be in 3NF
+* LHS of each functional dependency should be a Candidate Key.
+
+Q12) What is sharding ?
+Sharding is a method of partitioning a large database into smaller data , also known as shards.
+Sharding makes the database smaller , faster & much more easily manageable.
+Sharding reduces the transaction cost of the database.
+
+Q13) Difference between 2-tier & 3-tier ?
+     2- tier                                 |             3-tier
+2-tier architecture consists of 2 layers :   | 3-tier architecture consists of 3 layers:
+client layer & Database                      | Client layer , Business layer & Data layer
+It is less secured as client can communicate | It is secured as client is not allowed to communicate
+with database directly.                      | with database directly.
+
+
+Q14) Difference between Truncate & Delete Command
+     Delete Command                        |      Truncate Command
+It is a DML Command                        | It is a DDL Command
+The delete command is used to delete       | Truncate Command is used to delete all the rows from a table.
+specific rows                              |
+
+where clause can be used with delete       | where clause cannot be used with Truncate command.
+command in order to filter the records.    |
+
+
+Q15) What are Joins?
+To combine two or more tables based on a common field.
+1)Natural Join(Inner Join)
+2)Left(Outer Join)
+3)Right(Outer Join)
+4)Full(Outer) Join
+
+ 
