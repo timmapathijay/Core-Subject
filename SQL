@@ -1,0 +1,35 @@
+Create table Emp(
+e_id int ,
+e_name varchar(5),
+dept varchar(10),
+salary number(10)
+);
+desc Emp;
+insert into Emp Values (1,'A','HR',10000);
+insert into Emp Values(2,'B','MRKT',20000);
+insert into Emp Values(3,'A','HR',30000);
+insert into Emp Values(4,'C','MRKT',40000);
+insert into Emp Values(5,'D','IT',50000);
+
+Select * from Emp;
+
+/* Write a SQL Query to display maximum salary from Emp table */
+Select Max(salary) from Emp;
+
+/* Write a SQL Query to display employee name who is taking maximum salary */
+Select e_name from Emp where salary = (Select Max(salary) from Emp);
+
+/* Write a SQL Query to display second highest salary from Emp table */
+Select Max(salary) from Emp where salary <> (Select Max(salary) from Emp);
+
+/* Write a SQL Query to display employee name who is taking second highest salary */
+Select e_name from Emp where salary = (Select Max(salary) from Emp where salary <> (Select Max(salary) from Emp));
+
+/*
+Write a SQL Query to display all the dept name along with no of employees working in that ?
+*/
+Select  dept , count(*) from Emp group by dept;
+
+/* Write a Query to display all the dept names where no of employees are less than 2 */
+
+
