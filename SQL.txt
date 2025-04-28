@@ -1,0 +1,195 @@
+# Database 
+Database is a collection of data in a format that can be easily accessed(Digital)
+- A software application used to manage our DB is called DBMS(Database Management System).
+
+Types of Databases
+1. Relational Databases - data stored in tables.
+eg MySQL, SQLServer, Oracle, PostgreSQL
+- We use SQL to work with relational DBMS.
+2. Non - relational(NoSQL) - data not stored in tables.
+eg mongoDB
+
+# SQL (Structured Query Language)
+SQL is a programming language used to interact with relational databases.
+It is used to perform CRUD operations: 
+C - Create 
+R - Read
+U - Update
+D - Delete 
+
+SEQUEL - Structured English Query Language.
+
+# SQL Query 
+- To create database
+CREATE DATABASE IBM;
+or 
+CREATE DATABASE IF NOT EXISTS IBM;
+
+- To drop database
+DROP DATABASE TCS;
+or 
+DROP DATABASE IF EXISTS TCS;
+
+- To use database
+USE IBM;
+
+- To create table
+CREATE TABLE Employee(
+emp_id INT PRIMARY KEY,
+emp_name VARCHAR(50),
+emp_age INT NOT NULL
+);
+
+- To insert values in table
+INSERT INTO Employee VALUES(001, 'T Jay Lakshmi' , 25);
+or 
+INSERT INTO Employee (emp_id, emp_name, emp_age) VALUES
+(002, 'T Venkatesh Kumar' , 29),
+(003, 'T Susheela Rani' , 45);
+
+- To show all the existing databases in our server.
+SHOW DATABASES;
+
+- To drop table
+DROP TABLE Employee;
+
+- To view table data
+SELECT * FROM Employee;
+
+- To update existing rows
+UPDATE student SET student_city = "Hyderabad" WHERE student_id = 104;
+
+- To delete existing rows
+DELETE FROM student WHERE student_id = 104;
+
+# SQL Datatypes
+1. CHAR - string(0-255) can store characters of fixed length.
+2. VARCHAR - string(0-255) can store characters up to given length.
+3. BLOB - string(0-65535) can store binary large object.
+4. INT - integer(-2,147,483,648 to 2,147,483,647)
+5. TINYINT - integer(-128 to 127)
+6. BIGINT - integer(-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807)
+7. FLOAT - Decimal number with precision to 23 digits.
+8. DOUBLE - Decimal number with precision 24 to 53 digits.
+9. BOOLEAN - Boolean values 0 or 1.
+10. DATE - date in format of YYYY-MM-DD
+11. YEAR - year in 4 digits format 
+
+TINYINT UNSIGNED (0 to 255)
+
+# Types of SQL Commands 
+1. DDL(Data Definition Language) : create, alter, rename, truncate & drop.
+2. DQL(Data Query Language) : select
+3. DML(Data Manipulation Language) : insert, update & delete.
+4. DCL(Data Control Language) : grant & revoke permission to users.
+5. TCL(Transaction Control Language) : start transaction, commit, rollback.
+
+# Keys
+1. Primary Key : It is a column (or set of columns) in a table that uniquely identifies each row.
+- There is only 1 Primary Key & it should be NOT NULL.
+2. Foreign Key : A foreign key is a column (or set of columns) in a table that refers to the primary key of another table.
+- There can be multiple Foreign Keys.
+- Foreign Keys can have duplicate & NULL values.
+
+# Constraints 
+1. NOT NULL - column cannot have a NULL value.
+eg : column_name data-type NOT NULL
+2. UNIQUE - all values in column are different
+eg : column_name data-type UNIQUE
+3. PRIMARY KEY - makes a column unique & not null but used only for one
+eg : column_name data-type PRIMARY KEY
+4. FOREIGN KEY - prevent actions that would destroy links between tables
+5. DEFAULT - sets the default values of a column
+eg : column_name data-type DEFAULT value
+6. CHECK - it can limit the values allowed in a column
+eg : column_name data-type CHECK (column_name >= 18)
+
+# Clause
+1. WHERE Clause - to define some conditions
+
+- Operators
+1. AND(to check for both conditions to be true)
+2. OR(to check for one of the conditions to be true)
+3. BETWEEN(selects for a given range)
+4. IN(matches any value in the list)
+5. NOT IN(to negate the given condition)
+6. LIMIT : Sets an upper limit on number of (tuples)rows to be returned
+7. ORDER BY : To sort in ascending (ASC) or descending order (DESC)
+eg : SELECT * FROM table_name ORDER BY column_name ASC;
+8. GROUP BY : Group rows that have the same values into summary rows.
+- It collects data from multiple records & groups the result by one or more column.
+- Generally we use group by with some aggregate function.
+
+9. HAVING : Similar to WHERE i.e applies some condition on rows. Used when we want to apply any condition after grouping.
+
+
+# Aggregate Functions
+- Aggregate functions perform a calculation on a set of values & return a single value.
+1. COUNT() 
+2. MAX()
+3. MIN()
+4. SUM()
+5. AVG()
+
+WHERE --> rows 
+HAVING --> groups 
+
+# Cascading for Foreign Key
+- On Delete Cascade :- When we create a foreign key using this option, it deletes the referencing rows in the child table when the referenced row is deleted in the parent table which has the primary key.
+
+- On Update Cascade :- When we create a foreign key using UPDATE CASCADE the referencing rows are updated in the child table when the referenced row is updated in the parent table which has a primary key.
+
+
+# Table related Queries 
+Alter (to change the schema)
+1. Add Column 
+ALTER TABLE student 
+ADD COLUMN student_age INT;
+
+2. DROP Column 
+ALTER TABLE student 
+DROP COLUMN student_age;
+
+3. CHANGE Column Name (Rename)
+ALTER TABLE student CHANGE name student_name VARCHAR(50);
+
+4. MODIFY Column
+
+5. RENAME TABLE 
+ALTER TABLE student RENAME TO AEC_students;
+
+
+Truncate(to delete table's data)
+1. DROP - Delete table 
+2. TRUNCATE - Delete table data 
+
+# Joins in SQL 
+- Join is used to combine rows from two or more tables, based on related columns between them.
+1. Inner Join  - returns records that have matching values in both the tables 
+2. Outer Join (Left Outer Join , Right Outer Join , Full Join)
+
+Left Outer Join - returns all records from the left table, and the matched records from the right table.
+Right Outer Join - returns all records from the right table, and the matched records from the left table.
+Full Outer Join - returns all records when there is a match in either left or right table.
+FULL Outer Join -> (LEFT JOIN UNION RIGHT JOIN)
+Self Join - it is a regular join but the table is joined with itself.
+
+# SQL Sub-Queries
+A subquery or inner query or a nested query is a query within another SQL Query.
+It involves two select statements.
+
+Q1. Get names of all the students who scored more than class average.
+Step 1: Find the avg marks of the class
+Step 2: Find the names of students with marks > avg marks
+
+SELECT * FROM student WHERE student_marks > 
+ (SELECT AVG(student_marks) FROM student);
+ 
+
+Q2. Find the names of all students with even roll numbers.
+ Step 1 : Find the even roll numbers
+ Step 2 : Find the names of students with even roll numbers.
+ 
+ SELECT * FROM student WHERE student_id IN 
+ (SELECT student_id FROM student WHERE student_id % 2 = 0);
+  
