@@ -1,0 +1,24 @@
+Q1. How did you solve the dual-write consistency problem using Transactional Outbox pattern ?
+- We have a microservices architecture where we need to update our PostgreSQL database and publish events to Kafka.
+The main challenge was the dual-write problem. For eg if the database transaction succeeded but kafka publishing failed, the database and kafka would become inconsistent.
+To solve this we implemented the Transactional Outbox pattern 
+1) Instead of directly publishing an events to Kafka during the business transaction, we stored the business data and the event record in an event(outbox) table within the same database transaction. Since both operations happened in a single transaction either both succeeded or both roll-backed.
+2) A seperate background process then read the pending events from the event(outbox) table & publish them to kafka. Once the event successfully published, its status could be updated.
+
+Q2. How did you implemented redis caching & reduce API latency by 25% ?
+- Some of our high-traffic REST APIs were repeatedly fetching data from the database, increasing response time and database load.
+Cache-aside pattern 
+1) If the data is available, we return it directly from the cache. Otherwise we fetch it from the database, store it in Redis and return the response.
+2) TTL(Time to live) : prevent data from remaining stale indefinitely.
+3) For data that changes, cache entries can be evicted or updated when the underlying database record changes.
+
+Cache hit - data is available in Redis 
+Cache miss - must retrieve it from the original data source.
+
+Q3. What challenges did you face during the Java 11 to Java 21 migration?
+1) One major challenge was dependency compatibility. Some existing libraries and frameworks required upgrades to work properly with Java 21.
+2) Another challenge was ensuring application stability. We needed to verify that existing REST APIs, database interactions, and integrations continued working correctly after the migration.
+
+Q4. What is the difference between platform threads and virtual threads?
+- platform thread : are backed by operating-system threads. 
+- virtual thread : are lightweight threads managed by JVM. Virtual threads allow applications to handle many concurrent blocking operations more efficiently, especially I/O-bound workloads
