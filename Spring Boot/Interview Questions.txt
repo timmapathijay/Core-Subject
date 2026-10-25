@@ -49,6 +49,7 @@ spring version
 spring init -d dependencies project-name
 
 Q9. What is IOC or inversion of control ?
+Ans : Inverting the control of creating object using new keyword to container or framework
 
 Q10. Explain Spring Bean LifeCycle ?
 Ans : Bean - Java Object
